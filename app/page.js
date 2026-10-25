@@ -1,5 +1,7 @@
 import { Client } from '@notionhq/client'
 import HeroCardList from './HeroCardList'
+import SearchFilter from './SearchFilter'
+import Link from 'next/link'
 
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
@@ -22,10 +24,12 @@ async function getHeroList() {
   return res.results
 }
 
-export default async function Home() {
+export default async function Home({searchParams}) {
   const list = await getHeroList()
+  const q = searchParams?.q || ''
+  const cate = searchParams?.cate || ''
 
-  const heroDataList = list.map(item => {
+  let heroDataList = list.map(item => {
     const props = item.properties
     return {
       id: item.id,
@@ -39,20 +43,40 @@ export default async function Home() {
     }
   })
 
+  // 关键词过滤
+  if(q){
+    heroDataList = heroDataList.filter(h=> h.name.includes(q))
+  }
+  // 分类过滤（匹配定位里的文字）
+  if(cate){
+    heroDataList = heroDataList.filter(h=> h.position.includes(cate))
+  }
+
   return (
     <>
-      {/* 表头信息全部写死在这里，想改文字直接改这里 */}
       <header className="site-header">
         <div className="header-inner">
+          {/* 顶部导航菜单 */}
+          <nav className="top-nav">
+            <Link href="/" className="nav-link active">🏠 首页</Link>
+            <Link href="/" className="nav-link">🦸 英雄库</Link>
+            <Link href="#" className="nav-link">⚔️ 装备库</Link>
+          </nav>
           <h1 className="header-title">DOTA2 英雄攻略库</h1>
           <p className="header-sub">专注DOTA2英雄出装、技能加点、玩法思路参考</p>
           <div className="header-desc">
             本攻略库持续更新，适合新手快速上手，老玩家参考新思路
           </div>
+          {/* 搜索 + 分类区域 */}
+          <SearchFilter />
         </div>
       </header>
       <main className="container">
-        <HeroCardList heroes={heroDataList} />
+        {heroDataList.length <= 0 ? (
+          <div className="empty-tip">没有找到匹配的英雄</div>
+        ) : (
+          <HeroCardList heroes={heroDataList} />
+        )}
       </main>
     </>
   )
