@@ -40,9 +40,20 @@ export default async function Home() {
   })
 
   return (
-    <div className="container">
-      <h1>DOTA2 英雄攻略库</h1>
-      <HeroCardList heroes={heroDataList} />
-    </div>
+    <>
+      {/* 表头信息全部写死在这里，想改文字直接改这里 */}
+      <header className="site-header">
+        <div className="header-inner">
+          <h1 className="header-title">DOTA2 英雄攻略库</h1>
+          <p className="header-sub">专注DOTA2英雄出装、技能加点、玩法思路参考</p>
+          <div className="header-desc">
+            本攻略库持续更新，适合新手快速上手，老玩家参考新思路
+          </div>
+        </div>
+      </header>
+      <main className="container">
+        <HeroCardList heroes={heroDataList} />
+      </main>
+    </>
   )
 }
