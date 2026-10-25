@@ -37,6 +37,11 @@ export default async function HeroDetail({searchParams}) {
     <>
       <header className="site-header">
         <div className="header-inner">
+          <nav className="top-nav">
+            <Link href="/" className="nav-link active">🏠 首页</Link>
+            <Link href="/" className="nav-link">🦸 英雄库</Link>
+            <Link href="#" className="nav-link">⚔️ 装备库</Link>
+          </nav>
           <h1 className="header-title">DOTA2 英雄攻略库</h1>
           <p className="header-sub">专注DOTA2英雄出装、技能加点、玩法思路参考</p>
           <div className="header-desc">
@@ -75,4 +80,3 @@ export default async function HeroDetail({searchParams}) {
     </>
   )
 }
-
