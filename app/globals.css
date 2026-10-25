@@ -10,9 +10,8 @@ body {
   line-height: 1.65;
 }
 
-/* ========== 表头Header 背景样式【在这里改背景颜色、渐变】 ========== */
+/* ========== 表头Header ========== */
 .site-header {
-  /* 表头渐变背景，你想换颜色直接改下面色值 */
   background: linear-gradient(145deg, #171e2f, #0f1624);
   border-bottom: 1px solid rgba(251, 191, 36, 0.25);
   padding: 36px 16px;
@@ -21,6 +20,26 @@ body {
 .header-inner {
   max-width: 1280px;
   margin: 0 auto;
+}
+/* 顶部导航 */
+.top-nav {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+.nav-link {
+  color:#cbd5e1;
+  text-decoration: none;
+  padding:6px 14px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.08);
+  transition:0.2s;
+}
+.nav-link:hover, .nav-link.active{
+  background:#fbbf24;
+  color:#090d16;
+  font-weight: bold;
 }
 .header-title {
   font-size: 42px;
@@ -36,6 +55,62 @@ body {
 .header-desc {
   color: #9ca3af;
   font-size: 15px;
+  margin-bottom:24px;
+}
+
+/* 搜索和分类 */
+.search-filter-wrap{
+  display:flex;
+  gap:16px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.search-form{
+  display:flex;
+  gap:8px;
+}
+.search-input{
+  padding:10px 14px;
+  border-radius:10px;
+  border:none;
+  width:260px;
+  font-size:15px;
+  background:#131a29;
+  color:#fff;
+  border:1px solid #232e42;
+}
+.search-btn{
+  padding:10px 16px;
+  border-radius:10px;
+  background:#fbbf24;
+  color:#090d16;
+  border:none;
+  font-weight:bold;
+  cursor:pointer;
+}
+.cate-buttons{
+  display:flex;
+  gap:8px;
+}
+.cate-buttons button{
+  padding:9px 14px;
+  border-radius:9px;
+  border:1px solid #232e42;
+  background:#131a29;
+  color:#cbd5e1;
+  cursor:pointer;
+}
+.cate-buttons button.active{
+  background:#fbbf24;
+  color:#090d16;
+  border-color:#fbbf24;
+  font-weight:bold;
+}
+.empty-tip{
+  text-align:center;
+  font-size:18px;
+  color:#9ca3af;
+  padding:40px 0;
 }
 
 .container {
