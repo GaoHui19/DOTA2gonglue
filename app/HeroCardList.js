@@ -24,7 +24,6 @@ export default function HeroCardList({heroes}) {
         )
       })}
 
-      {/* 弹窗详情 */}
       {activeHero && (
         <div className="modal-mask" onClick={closeModal}>
           <div className="modal-box" onClick={e=>e.stopPropagation()}>
@@ -48,4 +47,3 @@ export default function HeroCardList({heroes}) {
     </div>
   )
 }
-
