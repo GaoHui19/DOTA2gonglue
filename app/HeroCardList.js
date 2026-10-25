@@ -16,7 +16,7 @@ export default function HeroCardList({heroes}) {
               <span className="tag">{hero.position}</span>
               <span className="tag diff-tag">{hero.diff}</span>
             </div>
-            <Link href={`/hero/${hero.id}`} className="detail-btn">查看详细攻略</Link>
+            <Link href={`/hero?id=${hero.id}`} className="detail-btn">查看详细攻略</Link>
           </div>
         )
       })}
