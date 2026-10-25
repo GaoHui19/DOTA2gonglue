@@ -25,7 +25,6 @@ async function getHeroList() {
 export default async function Home() {
   const list = await getHeroList()
 
-  // 格式化数据，转成普通对象传给客户端组件（必须序列化！）
   const heroDataList = list.map(item => {
     const props = item.properties
     return {
