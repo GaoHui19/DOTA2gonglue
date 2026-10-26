@@ -2,23 +2,38 @@ import { getHeroList } from '@/lib/notion'
 import HeroCardList from '../HeroCardList'
 import SearchFilter from '../SearchFilter'
 
-export default async function HeroPage({ searchParams }) {
-  const allHeroes = await getHeroList()
+export default async function HeroesPage({ searchParams }) {
+  // TODO: 替换成你的英雄库真实查询
+  const heroes = [
+    {
+      id: '1',
+      name: '斧王',
+      alias: 'Mogul Khan',
+      avatar: '',
+    },
+    {
+      id: '2',
+      name: '影魔',
+      alias: 'Nevermore',
+      avatar: '',
+    },
+  ]
+
   const q = searchParams?.q || ''
   const cate = searchParams?.cate || ''
 
-  let heroes = allHeroes
-  if(q) heroes = heroes.filter(h=>h.name.includes(q))
-  if(cate) heroes = heroes.filter(h=>h.attr.includes(cate))
+  let filtered = heroes
+  if (q) {
+    filtered = filtered.filter((h) => h.name.includes(q))
+  }
 
   return (
     <div className="content-inner">
-      <header className="page-header">
-        <h1>英雄攻略</h1>
+      <div className="page-header">
+        <h1>英雄资料</h1>
         <SearchFilter />
-      </header>
-      <HeroCardList heroes={heroes}/>
+      </div>
+      <HeroCardList heroes={filtered} />
     </div>
   )
 }
-
