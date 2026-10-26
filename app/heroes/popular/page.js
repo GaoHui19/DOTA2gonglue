@@ -1,14 +1,41 @@
-import { getHeroList } from '@/lib/notion'
-import HeroCardList from '../../HeroCardList'
+import HeroCardList from '@/app/HeroCardList'
 
-export default async function PopularHero() {
-  const heroes = await getHeroList()
-  const popular = heroes.slice(0,6)
+export default async function PopularHeroPage() {
+  // 热门英雄模拟数据，后续对接Notion
+  const popularHeroes = [
+    {
+      id: '1',
+      name: '斧王',
+      alias: 'Mogul Khan',
+      avatar: '',
+    },
+    {
+      id: '2',
+      name: '影魔',
+      alias: 'Nevermore',
+      avatar: '',
+    },
+    {
+      id: '3',
+      name: '火女',
+      alias: 'Lina',
+      avatar: '',
+    },
+    {
+      id: '4',
+      name: '卡尔',
+      alias: 'Invoker',
+      avatar: '',
+    },
+  ]
+
   return (
     <div className="content-inner">
-      <header className="page-header"><h1>热门英雄</h1></header>
-      <HeroCardList heroes={popular}/>
+      <div className="page-header">
+        <h1>热门英雄</h1>
+        <p>玩家高频选用英雄推荐</p>
+      </div>
+      <HeroCardList heroes={popularHeroes} />
     </div>
   )
 }
-
