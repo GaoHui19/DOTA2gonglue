@@ -14,14 +14,14 @@ export default function SearchFilter() {
     const params = new URLSearchParams()
     if (keyword) params.set('q', keyword)
     if (cate) params.set('cate', cate)
-    router.push(`/?${params.toString()}`)
+    router.push(`/heroes?${params.toString()}`)
   }
 
   function selectCategory(val) {
     const params = new URLSearchParams(searchParams.toString())
     if (val) params.set('cate', val)
     else params.delete('cate')
-    router.push(`/?${params.toString()}`)
+    router.push(`/heroes?${params.toString()}`)
   }
 
   return (
@@ -36,10 +36,10 @@ export default function SearchFilter() {
         <button type="submit" className="search-btn">搜索</button>
       </form>
       <div className="cate-buttons">
-        <button onClick={() => selectCategory('')} className={cate===''?'active':''}>全部</button>
-        <button onClick={() => selectCategory('力量')} className={cate==='力量'?'active':''}>力量</button>
-        <button onClick={() => selectCategory('敏捷')} className={cate==='敏捷'?'active':''}>敏捷</button>
-        <button onClick={() => selectCategory('智力')} className={cate==='智力'?'active':''}>智力</button>
+        <button onClick={() => selectCategory('')} className={cate === '' ? 'active' : ''}>全部</button>
+        <button onClick={() => selectCategory('力量')} className={cate === '力量' ? 'active' : ''}>力量</button>
+        <button onClick={() => selectCategory('敏捷')} className={cate === '敏捷' ? 'active' : ''}>敏捷</button>
+        <button onClick={() => selectCategory('智力')} className={cate === '智力' ? 'active' : ''}>智力</button>
       </div>
     </div>
   )
