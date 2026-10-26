@@ -8,7 +8,6 @@ export const metadata = {
 }
 
 export default async function RootLayout({ children }) {
-  // 全局读取Notion菜单，所有页面共用
   const menuTree = await getMenuTree()
   return (
     <html lang="zh-CN">
