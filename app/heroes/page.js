@@ -8,20 +8,28 @@ export default async function HeroesPage({ searchParams }) {
       name: '斧王',
       alias: 'Mogul Khan',
       avatar: '',
+      attr: '力量'
     },
     {
       id: '2',
       name: '影魔',
       alias: 'Nevermore',
       avatar: '',
+      attr: '敏捷'
     },
   ]
 
   const q = searchParams?.q || ''
+  const cate = searchParams?.cate || ''
 
   let filtered = heroes
+  // 关键词搜索过滤
   if (q) {
     filtered = filtered.filter((h) => h.name.includes(q))
+  }
+  // 属性分类过滤
+  if (cate) {
+    filtered = filtered.filter((h) => h.attr === cate)
   }
 
   return (
