@@ -3,260 +3,341 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
-  background-color: #090d16;
+  background-color: #070b12;
   color: #e5e7eb;
   font-family: system-ui, -apple-system, sans-serif;
   line-height: 1.65;
 }
 
-/* ========== 表头Header ========== */
-.site-header {
-  background: linear-gradient(145deg, #171e2f, #0f1624);
-  border-bottom: 1px solid rgba(251, 191, 36, 0.25);
-  padding: 36px 16px;
-  margin-bottom: 42px;
-}
-.header-inner {
-  max-width: 1280px;
-  margin: 0 auto;
-}
-/* 顶部导航 */
-.top-nav {
+/* ========== 整体左右布局 ========== */
+.page-wrap {
   display: flex;
-  gap: 14px;
-  margin-bottom: 18px;
-  flex-wrap: wrap;
+  min-height: 100vh;
 }
-.nav-link {
-  color:#cbd5e1;
-  text-decoration: none;
-  padding:6px 14px;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.08);
-  transition:0.2s;
+
+/* ========== 左侧侧边栏 ========== */
+.side-bar {
+  width: 240px;
+  flex-shrink: 0;
+  background: linear-gradient(180deg, #111824, #090d16);
+  border-right: 1px solid rgba(251, 191, 36, 0.18);
+  padding: 28px 12px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  overflow-y: auto;
 }
-.nav-link:hover, .nav-link.active{
-  background:#fbbf24;
-  color:#090d16;
-  font-weight: bold;
-}
-.header-title {
-  font-size: 42px;
+.side-logo {
+  font-size: 22px;
   color: #fbbf24;
-  letter-spacing: 3px;
-  margin-bottom: 8px;
-}
-.header-sub {
-  color: #d1d5db;
-  font-size: 17px;
-  margin-bottom: 6px;
-}
-.header-desc {
-  color: #9ca3af;
-  font-size: 15px;
-  margin-bottom:24px;
-}
-
-/* 搜索和分类 */
-.search-filter-wrap{
-  display:flex;
-  gap:16px;
-  align-items:center;
-  flex-wrap:wrap;
-}
-.search-form{
-  display:flex;
-  gap:8px;
-}
-.search-input{
-  padding:10px 14px;
-  border-radius:10px;
-  border:none;
-  width:260px;
-  font-size:15px;
-  background:#131a29;
-  color:#fff;
-  border:1px solid #232e42;
-}
-.search-btn{
-  padding:10px 16px;
-  border-radius:10px;
-  background:#fbbf24;
-  color:#090d16;
-  border:none;
-  font-weight:bold;
-  cursor:pointer;
-}
-.cate-buttons{
-  display:flex;
-  gap:8px;
-}
-.cate-buttons button{
-  padding:9px 14px;
-  border-radius:9px;
-  border:1px solid #232e42;
-  background:#131a29;
-  color:#cbd5e1;
-  cursor:pointer;
-}
-.cate-buttons button.active{
-  background:#fbbf24;
-  color:#090d16;
-  border-color:#fbbf24;
-  font-weight:bold;
-}
-.empty-tip{
-  text-align:center;
-  font-size:18px;
-  color:#9ca3af;
-  padding:40px 0;
-}
-
-.container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 16px 50px;
-}
-
-/* 英雄卡片列表布局 */
-.card-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-  gap: 26px;
-}
-.card {
-  background: #131a29;
-  border-radius: 20px;
-  padding: 26px 22px;
-  border: 1px solid #232e42;
-  transition: all 0.24s ease;
+  font-weight: bold;
+  letter-spacing: 2px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 24px;
   text-align: center;
 }
-.card:hover {
-  transform: translateY(-8px);
-  border-color: #fbbf24;
-  box-shadow: 0 12px 32px rgba(251,191,36,0.14);
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
-.avatar-wrap {
-  margin:0 auto 16px;
-  width:115px;
-  height:115px;
+.menu-group {
+  margin-bottom: 2px;
 }
-.avatar {
-  width:100%;
-  height:100%;
-  object-fit: cover;
-  border-radius: 16px;
-  border:2px solid #333f56;
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-radius: 8px;
+  transition: 0.2s;
 }
-.avatar-empty {
-  width:100%;
-  height:100%;
-  background:#232e42;
-  border-radius:16px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:38px;
-  color:#fbbf24;
+.menu-item:hover {
+  background: rgba(251, 191, 36, 0.08);
 }
-.card h2 {
-  color: #fb923c;
-  margin-bottom:4px;
-  font-size:23px;
+.menu-item.active {
+  background: rgba(251, 191, 36, 0.14);
+  border-left: 3px solid #fbbf24;
 }
-.en-title {
-  color:#9ca3af;
-  font-size:14px;
-  margin-bottom:16px;
-}
-.tag-row {
-  margin-bottom:22px;
-}
-.tag {
-  display:inline-block;
-  background:#232e42;
-  padding:6px 11px;
-  border-radius:9px;
-  font-size:13px;
-  margin:4px;
-  color:#cbd5e1;
-}
-.diff-tag {
-  background:#2c1b26;
-  color:#f87171;
-}
-.detail-btn {
-  display:block;
+.menu-link {
+  color: #b8c2cc;
   text-decoration: none;
-  width:100%;
-  padding:12px;
-  border:none;
-  border-radius:14px;
-  background:#fbbf24;
-  color:#090d16;
-  font-weight:bold;
-  cursor:pointer;
-  transition:0.2s;
-  font-size:16px;
+  flex: 1;
+  font-size: 15px;
 }
-.detail-btn:hover {
-  background:#f59e0b;
+.menu-item.active .menu-link {
+  color: #fbbf24;
+  font-weight: 600;
+}
+.expand-btn {
+  background: transparent;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  font-size: 18px;
+}
+.submenu-wrap {
+  padding-left: 18px;
+  border-left: 1px solid #273248;
+  margin: 4px 0 4px 12px;
+}
+.submenu-item {
+  display: block;
+  padding: 8px 10px;
+  color: #9ca3af;
+  text-decoration: none;
+  font-size: 14px;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+.submenu-item:hover {
+  color: #fbbf24;
+}
+.submenu-item.active {
+  color: #fbbf24;
+  font-weight: 600;
+}
+.side-bottom {
+  margin-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 20px;
+  text-align: center;
+  color: #9ca3af;
+  font-size: 14px;
+}
+.qrcode-placeholder {
+  width: 120px;
+  height: 120px;
+  margin: 12px auto;
+  background: #1b2434;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fbbf24;
+  border: 1px solid rgba(251, 191, 36, 0.2);
+}
+.side-tip {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #788290;
 }
 
-/* 详情页面样式 */
+/* ========== 右侧主内容区 ========== */
+.main-content {
+  margin-left: 240px;
+  flex: 1;
+  background: #070b12;
+  background-image: radial-gradient(circle at top right, rgba(251, 191, 36, 0.06), transparent 60%);
+  min-height: 100vh;
+}
+.content-inner {
+  padding: 32px;
+  max-width: 1400px;
+}
+.page-header {
+  margin-bottom: 28px;
+}
+.page-header h1 {
+  font-size: 32px;
+  color: #fbbf24;
+  margin-bottom: 8px;
+}
+
+/* ========== 搜索筛选 ========== */
+.search-filter-wrap {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.search-form {
+  display: flex;
+  gap: 8px;
+}
+.search-input {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #232e42;
+  width: 260px;
+  font-size: 15px;
+  background: #131a29;
+  color: #fff;
+  outline: none;
+}
+.search-input:focus {
+  border-color: #fbbf24;
+}
+.search-btn {
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: #fbbf24;
+  color: #070b12;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+.cate-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.cate-buttons button {
+  padding: 9px 14px;
+  border-radius: 9px;
+  border: 1px solid #232e42;
+  background: #131a29;
+  color: #cbd5e1;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.cate-buttons button.active {
+  background: #fbbf24;
+  color: #070b12;
+  border-color: #fbbf24;
+  font-weight: bold;
+}
+
+/* ========== 英雄卡片网格 ========== */
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 22px;
+}
+.hero-card {
+  background: #111824;
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid rgba(251, 191, 36, 0.12);
+  transition: all 0.24s ease;
+  text-align: center;
+  text-decoration: none;
+  color: #e5e7eb;
+  display: block;
+}
+.hero-card:hover {
+  transform: translateY(-6px);
+  border-color: #fbbf24;
+  box-shadow: 0 10px 28px rgba(251, 191, 36, 0.12);
+}
+.hero-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid #232e42;
+  margin-bottom: 12px;
+}
+.hero-card h3 {
+  color: #fb923c;
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+.hero-card p {
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+/* ========== 详情页 ========== */
 .back-btn {
   display: inline-block;
-  color:#fbbf24;
+  color: #fbbf24;
   text-decoration: none;
-  margin-bottom:26px;
-  font-size:17px;
+  margin-bottom: 24px;
+  font-size: 16px;
 }
 .back-btn:hover {
   text-decoration: underline;
 }
 .detail-card {
-  background: #131a29;
-  border-radius: 22px;
-  border: 1px solid #232e42;
-  padding:36px;
+  background: #111824;
+  border-radius: 20px;
+  border: 1px solid rgba(251, 191, 36, 0.15);
+  padding: 32px;
 }
 .detail-top {
-  display:flex;
-  gap:28px;
-  align-items:center;
-  margin-bottom:34px;
-  flex-wrap:wrap;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
 }
-.detail-avatar {
-  width:150px;
-  height:150px;
+.detail-top img {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 2px solid #232e42;
 }
-.detail-avatar img {
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  border-radius:18px;
-  border:2px solid #333f56;
+.detail-top h2 {
+  font-size: 30px;
+  color: #fb923c;
+  margin-bottom: 6px;
 }
-.detail-title-wrap h2 {
-  font-size:34px;
-  color:#fb923c;
-  margin-bottom:6px;
+.detail-body section {
+  margin-bottom: 22px;
 }
-.detail-item {
-  margin-bottom:26px;
+.detail-body h3 {
+  color: #fbbf24;
+  font-size: 18px;
+  margin-bottom: 8px;
+  border-left: 4px solid #fbbf24;
+  padding-left: 12px;
 }
-.detail-item h3 {
-  color:#fbbf24;
-  font-size:19px;
-  margin-bottom:9px;
-  border-left:4px solid #fbbf24;
-  padding-left:12px;
-}
-.detail-item p {
-  color:#d1d5db;
+.detail-body p {
+  color: #d1d5db;
   white-space: pre-line;
-  line-height:1.7;
+  line-height: 1.7;
+}
+
+/* ========== 装备卡片 ========== */
+.item-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 22px;
+}
+.item-card {
+  background: #111824;
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid rgba(251, 191, 36, 0.12);
+  transition: all 0.24s ease;
+}
+.item-card:hover {
+  border-color: #fbbf24;
+}
+.item-card img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+.item-card h4 {
+  color: #fb923c;
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+.item-card p {
+  color: #9ca3af;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+/* ========== 移动端适配 ========== */
+@media (max-width: 900px) {
+  .side-bar {
+    width: 200px;
+  }
+  .main-content {
+    margin-left: 200px;
+  }
+  .content-inner {
+    padding: 20px;
+  }
 }
