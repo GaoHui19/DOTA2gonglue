@@ -1,9 +1,7 @@
-import { getHeroList } from '@/lib/notion'
 import HeroCardList from '../HeroCardList'
 import SearchFilter from '../SearchFilter'
 
 export default async function HeroesPage({ searchParams }) {
-  // TODO: 替换成你的英雄库真实查询
   const heroes = [
     {
       id: '1',
@@ -20,7 +18,6 @@ export default async function HeroesPage({ searchParams }) {
   ]
 
   const q = searchParams?.q || ''
-  const cate = searchParams?.cate || ''
 
   let filtered = heroes
   if (q) {
