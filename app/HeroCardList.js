@@ -1,25 +1,19 @@
-'use client'
 import Link from 'next/link'
 
-export default function HeroCardList({heroes}) {
+export default function HeroCardList({ heroes }) {
   return (
-    <div className="card-list">
-      {heroes.map(hero=>{
-        return (
-          <div className="card" key={hero.id}>
-            <div className="avatar-wrap">
-              {hero.avatarUrl ? <img src={hero.avatarUrl} alt={hero.name} className="avatar"/> : <div className="avatar-empty">{hero.name[0]}</div>}
-            </div>
-            <h2>{hero.name}</h2>
-            <div className="en-title">{hero.titleEn}</div>
-            <div className="tag-row">
-              <span className="tag">{hero.position}</span>
-              <span className="tag diff-tag">{hero.diff}</span>
-            </div>
-            <Link href={`/hero?id=${hero.id}`} className="detail-btn">查看详细攻略</Link>
-          </div>
-        )
-      })}
+    <div className="hero-grid">
+      {heroes.map((hero) => (
+        <Link
+          key={hero.id}
+          href={`/heroes/detail?id=${hero.id}`}
+          className="hero-card"
+        >
+          {hero.avatar && <img src={hero.avatar} alt={hero.name} />}
+          <h3>{hero.name}</h3>
+          <p>{hero.alias}</p>
+        </Link>
+      ))}
     </div>
   )
 }
