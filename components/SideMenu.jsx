@@ -6,38 +6,48 @@ import { useState } from 'react'
 export default function SideMenu({ menuTree }) {
   const pathname = usePathname()
   const [openKeys, setOpenKeys] = useState({})
-  const toggle = (id) => {
-    setOpenKeys(prev => ({ ...prev, [id]: !prev[id] }))
+
+  const toggleOpen = (id) => {
+    setOpenKeys((prev) => ({ ...prev, [id]: !prev[id] }))
+  }
+
+  if (!menuTree || menuTree.length === 0) {
+    return <aside className="side-bar">侧边菜单加载中...</aside>
   }
 
   return (
     <aside className="side-bar">
-      <div className="side-logo">DOTA2攻略库</div>
+      <div className="side-logo">DOTA2 攻略库</div>
       <nav className="side-nav">
-        {menuTree.map(menu => {
+        {menuTree.map((menu) => {
           const hasChild = menu.children && menu.children.length > 0
-          const active = pathname === menu.slug || pathname.startsWith(menu.slug + '/')
-          const isOpen = openKeys[menu.id]
+          const isActive = pathname === menu.link
+          const isOpen = openKeys[menu.id] ?? true
 
           return (
             <div key={menu.id} className="menu-group">
-              <div className={`menu-item ${active ? 'active' : ''}`}>
-                <Link href={menu.slug} className="menu-link">
+              <div className={`menu-item ${isActive ? 'active' : ''}`}>
+                <Link href={menu.link || '#'} className="menu-link">
                   {menu.title}
                 </Link>
                 {hasChild && (
-                  <button onClick={()=>toggle(menu.id)} className="expand-btn">
+                  <button
+                    className="expand-btn"
+                    onClick={() => toggleOpen(menu.id)}
+                  >
                     {isOpen ? '−' : '+'}
                   </button>
                 )}
               </div>
               {hasChild && isOpen && (
                 <div className="submenu-wrap">
-                  {menu.children.map(sub => (
+                  {menu.children.map((sub) => (
                     <Link
                       key={sub.id}
-                      href={sub.slug}
-                      className={`submenu-item ${pathname === sub.slug ? 'active' : ''}`}
+                      href={sub.link || '#'}
+                      className={`submenu-item ${
+                        pathname === sub.link ? 'active' : ''
+                      }`}
                     >
                       {sub.title}
                     </Link>
@@ -49,11 +59,10 @@ export default function SideMenu({ menuTree }) {
         })}
       </nav>
       <div className="side-bottom">
-        <p>扫码加群</p>
+        <p>扫码加群交流</p>
         <div className="qrcode-placeholder">QR</div>
-        <p className="side-tip">有问题，联系在线客服</p>
+        <p className="side-tip">攻略持续更新中</p>
       </div>
     </aside>
   )
 }
-
