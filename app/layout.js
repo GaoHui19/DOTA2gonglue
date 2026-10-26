@@ -1,5 +1,5 @@
 import './globals.css'
-import SideMenu from '@/components/SideMenu'
+import SideMenu from './SideMenu'
 
 export const metadata = {
   title: 'DOTA2攻略库',
@@ -7,7 +7,6 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
-  // 临时写死菜单，不再调用notion接口，先规避报错
   const menuTree = [
     {
       id: 'home',
