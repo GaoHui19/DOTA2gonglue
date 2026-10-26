@@ -1,6 +1,6 @@
 import './globals.css'
 import SideMenu from './SideMenu'
-import { getMenuTree } from '@/lib/notion'
+import { getMenuTree } from '../lib/notion'
 
 export const metadata = {
   title: 'DOTA2攻略库',
