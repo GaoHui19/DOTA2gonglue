@@ -1,7 +1,6 @@
-import HeroCardList from '@/app/HeroCardList'
+import HeroCardList from '../../HeroCardList'
 
 export default async function PopularHeroPage() {
-  // 热门英雄模拟数据，后续对接Notion
   const popularHeroes = [
     {
       id: '1',
